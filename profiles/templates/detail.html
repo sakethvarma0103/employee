@@ -1,0 +1,65 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{employee.name |title}}</title>
+    <link rel="stylesheet" href="{%static "styles.css" %}">
+</head>
+<body>
+    <div class="nav">
+        {%if value%}
+        <a href="{%url 'all' %}"><h3>Saketh</h3></a>
+        {%else%}
+        <h3>Saketh</h3>
+        {%endif%}
+    <ul>
+        <li>
+
+        </li>
+        <a href="{%url 'logout' %}"><li><h3>Logout</h3></li></a>
+    </ul>
+    </div>
+    <div class="container">
+        <div class="details">
+            <div class="left">
+            <img src="{{employee.image.url}}">
+            <a href="{%url "edit" employee.slug %}"><button>Edit</button></a>
+            </div>
+            <div class="right">
+                <div class="leo">
+                    <h3 class="underline-transition">Name</h3>
+                    <br>
+                    <h4>{{employee.name|title}}</h4>
+                </div>
+                <div class="leo">
+                    <h3 class="underline-transition">Email</h3>
+                    <br>
+                    <h4>{{employee.email}}</h4>
+                </div>
+                <div class="leo">
+                    <h3 class="underline-transition">Age</h3>
+                    <br>
+                    <h4>{{employee.age}}</h4>
+                </div>
+                <div class="leo">
+                    <h3 class="underline-transition">Position</h3>
+                    <br>
+                    <h4>{{employee.position|title}}</h4>
+                </div>
+                <div class="leo">
+                    <h3 class="underline-transition">Contact</h3>
+                    <br>
+                    <h4>{{employee.phone_number}}</h4>
+                </div>
+                <div class="leo">
+                    <h3 class="underline-transition">Designation</h3>
+                    <br>
+                    <h4>{{employee.designation|title}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
