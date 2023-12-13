@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Employee, Search
 from .forms import EmployeeForm, SearchForm,DeleteForm,EditForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login,logout
 from django.utils.text import slugify
 from members.models import Login
 from django.contrib.auth.models import User
@@ -76,7 +77,6 @@ def edit(request,slug):
             return redirect('detail',slug)
     else:
         form = EditForm(instance=employee)
-
     return render(request, 'edit.html', {
         'form': form,
         'employee': employee

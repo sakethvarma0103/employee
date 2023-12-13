@@ -7,7 +7,7 @@ class LoginForm(forms.ModelForm):
         model = Login
         fields = ['user_name', 'password']
         labels = {
-            "user_name": "Your Name",
+            "user_name": "Your Email",
             "password": "Password",
         }
 
@@ -16,6 +16,6 @@ class SignForm(forms.ModelForm):
         model = Signup
         fields = "__all__"
         labels = {
-            "user_name": "Your Name",
+            "user_name": "Your Email",
             "password": "Password",
         }

@@ -4,7 +4,7 @@ from .models import Employee,Search
 class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
-        fields = ['name','age','email','username','position','designation','phone_number','image']
+        fields = ['name','age','email','position','designation','phone_number','image']
     def clean_username(self):
         username = self.cleaned_data['username']
         if Employee.objects.filter(username=username).exists():

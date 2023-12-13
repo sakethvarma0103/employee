@@ -16,7 +16,10 @@ class Employee(models.Model):
     username=models.CharField(max_length=50,default='')
 
     def save(self, *args, **kwargs):
-        self.slug=slugify(self.username)
+        k=str(self.email).index("@")
+        x=str(self.email)[:k]
+        self.username=self.email
+        self.slug=slugify(x)
         super().save(*args, **kwargs)
     def __str__(self):
         return f"{self.name}"
