@@ -71,9 +71,11 @@ def search(request):
 def edit(request,slug):
     employee = Employee.objects.get(slug=slug)
     if request.method == 'POST':
-        form = EditForm(request.POST, instance=employee)
+        form = EditForm(request.POST,request.FILES, instance=employee)
         if form.is_valid():    
             form.save()
+            if 'image' in request.FILES:
+                employee.image = request.FILES['image']
             return redirect('detail',slug)
     else:
         form = EditForm(instance=employee)
