@@ -5,7 +5,7 @@
     font-family: 'Poppins', sans-serif;
     /* font-family: 'Rubik', sans-serif; */
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red;  */
 }
 
 a {
@@ -45,6 +45,7 @@ p {
     margin-top: 0;
     border: 2px solid var(--colorcard);
     /* display: inline; */
+
 }
 
 .nav {
@@ -228,113 +229,6 @@ p {
     cursor: pointer;
 }
 
-.sidebar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding: 6px 14px;
-    height: 100%;
-    width: 70px;
-    background: var(--colorblack);
-    transition: all 0.2s ease-in-out;
-}
-
-.sidebar.active {
-    width: 240px;
-}
-
-.sidebar .gitam-logo .logo {
-    color: var(--colorwhite);
-    display: flex;
-    height: 60px;
-    width: 100%;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar.active .gitam-logo .logo {
-    opacity: 1;
-    pointer-events: none;
-}
-
-.sidebar .gitam-logo .logo i {
-    font-size: 28px;
-    margin-right: 5px;
-    color: var(--colorwhite);
-}
-
-.gitam-logo .logo .logo-name {
-    font-size: 20px;
-    font-weight: 400;
-    color: white;
-}
-
-.sidebar #btn {
-    position: absolute;
-    left: 20%;
-    color: var(--colorwhite);
-    top: 6px;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;
-}
-
-.sidebar.active #btn {
-    left: 80%;
-}
-
-.sidebar ul {
-    margin-top: 20px;
-
-}
-
-.sidebar ul li {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin: 0 5px;
-    line-height: 50px;
-
-}
-
-
-.sidebar ul li a {
-    color: var(--colorwhite);
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 10px;
-    white-space: nowrap;
-}
-
-.sidebar ul li a:hover {
-    color: var(--colorblack);
-    background: var(--colorwhite);
-}
-
-.sidebar ul li a i {
-    height: 50px;
-    min-width: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    text-align: center;
-}
-
-.sidebar .list_names {
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.2s ease-in-out;
-}
-
-.sidebar.active .list_names {
-    opacity: 1;
-    pointer-events: auto;
-
-}
-
 @media screen and (max-width:1240px) {
 
 
@@ -353,20 +247,16 @@ p {
 
 
 }
-
-form {
-    margin: 3rem auto;
-    width: 90%;
-    max-width: 30rem;
-    padding: 1rem;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  }
-
-  button {
+.single-line-form {
+    margin:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+button {
     cursor: pointer;
     padding: 0.5rem 1.5rem;
+    margin-right: 20px;
     border-radius: 6px;
     background-color: #1f0050;
     color: white;
@@ -391,7 +281,7 @@ form {
     display: block;
     width: 15rem;
   }
-
+  
   .form-control input:focus {
     border-color: #1f0050;
     outline: none;
@@ -404,30 +294,19 @@ form {
     margin-bottom: 0.5rem;
   }
 
-  
 @media screen and (max-width:576px) {
-    .container {
-        height: auto;
-        width: 95%;
-        margin: 0 auto;
-        background-color: var(--colorwhite);
-        border-radius: 20px 20px 20px 20px;
-        margin-left: 5%;
-        border: 2px solid var(--colorcard);
-        /* display: inline; */
+    .single-line-form{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
     }
-    
     .col {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         padding: 5px;
-        margin-left: 2rem;
-        justify-content: center;
-        align-items: center;
     }
     .card {
-        height: 190px;
-        width: 152px;
+        height: 200px;
+        width: 160px;
         /* display: inline-block; */
         display: flex;
         flex-direction: column;
@@ -450,7 +329,7 @@ form {
         transition: all 0.4s ease;
     }
     .card h4 {
-        font-size: 10px;
+        font-size: 12px;
         margin-top: 2px;
         font-weight: 500;
         transition: all 0.4s ease;
@@ -458,7 +337,7 @@ form {
     
     .card h5{
         color:#0A2647;
-        font-size: 10px;
+        font-size: 12px;
         transition: all 0.4s ease;
     }
     
@@ -491,62 +370,4 @@ form {
     .card.hover .linkimg {
         transform: none;
     }
-    .left img {
-        padding: 25px 25px 25px 25px;
-        width: 250px;
-        border-radius: 50px;
-    }
-    .left button{
-        margin-left:50px;
-        margin-bottom:10px;
-    }
-    
-    .right {
-        padding: 20px;
-        padding-top: 25px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .right h3{
-        color: #0A2647;
-        margin-bottom: -5px;
-    }
-    .right h4{
-        margin-bottom: 20px;
-    }
-    .underline-transition {
-        text-decoration: none;
-        position: relative;
-        transition: all 0.5s;
-    }
-    
-    .underline-transition:hover {
-        text-decoration: none;
-    }
-    
-    .underline-transition::before {
-        content: "";
-        position: absolute;
-        width: 60%;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: #000;
-        /* Change this to your desired underline color */
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.5s ease;
-    }
-    
-    /* Expand the underline on hover */
-    .underline-transition:hover::before {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
-    
-    .details {
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-    }
-    
-}
+  }
