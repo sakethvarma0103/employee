@@ -26,6 +26,9 @@
             <div class="left">
             <img src="{{employee.image.url}}">
             <a href="{%url "edit" employee.slug %}"><button>Edit</button></a>
+            {%if value%}
+            <a href="{%url "deleteslug" employee.slug%}"><button>Delete</button></a>
+            {%endif%}
             </div>
             <div class="right">
                 <div class="leo">

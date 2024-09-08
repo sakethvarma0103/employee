@@ -40,12 +40,14 @@ def detail(request, slug):
     employee = get_object_or_404(Employee, slug=slug)
     value=False
     user=request.user
-    if user_is_admin(user):
-        value=True
-    return render(request, "detail.html", {
-        "employee": employee,
-        "value":value
-    })
+    x=str(user)
+    if x==str(employee.username) or user_is_admin(user):
+        return render(request, "detail.html", {
+            "employee": employee,
+            "value":user_is_admin(user)
+        })
+    else:
+        return redirect('all')
 
 @user_passes_test(user_is_admin)
 def search(request):
@@ -98,6 +100,18 @@ def delete(request):
         return redirect("all")
     return render(request,"delete.html",{
         "form":form,
+        "value":value
+    })
+
+@user_passes_test(user_is_admin)
+def deleteslug(request,slug):
+    value=False
+    employee = Employee.objects.get(slug=slug)
+    if employee:
+        employee.delete()
+        value=True
+        return redirect("all")
+    return render(request,"delete.html",{
         "value":value
     })
 
