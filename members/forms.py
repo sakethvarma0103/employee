@@ -18,4 +18,4 @@ class SignForm(forms.ModelForm):
         labels = {
             "user_name": "Your Email",
             "password": "Password",
-        }
+        }  

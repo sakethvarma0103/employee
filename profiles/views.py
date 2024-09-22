@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect,HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Employee, Search
-from .forms import EmployeeForm, SearchForm,DeleteForm,EditForm
+from .models import Employee, Search,Tasks
+from .forms import EmployeeForm, SearchForm,DeleteForm,EditForm,TaskForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from django.utils.text import slugify
@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 
 def user_is_admin(user):
-    return user.is_authenticated and user.is_superuser
+    return user.is_authenticated and user.email=="vdantulu4@gitam.in"
 
 @user_passes_test(user_is_admin)
 def index(request):
@@ -40,7 +40,7 @@ def detail(request, slug):
     employee = get_object_or_404(Employee, slug=slug)
     value=False
     user=request.user
-    x=str(user)
+    x=user.email
     if x==str(employee.username) or user_is_admin(user):
         return render(request, "detail.html", {
             "employee": employee,
@@ -78,7 +78,11 @@ def edit(request,slug):
             form.save()
             if 'image' in request.FILES:
                 employee.image = request.FILES['image']
-            return redirect('detail',slug)
+            k=str(employee.email).index("@")
+            x=str(employee.email)[:k]
+            employee.username=employee.email
+            employee.slug=slugify(x)
+            return redirect('detail',employee.slug)
     else:
         form = EditForm(instance=employee)
     return render(request, 'edit.html', {
@@ -114,5 +118,3 @@ def deleteslug(request,slug):
     return render(request,"delete.html",{
         "value":value
     })
-
-

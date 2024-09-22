@@ -1,5 +1,5 @@
 from django import forms
-from .models import Employee,Search
+from .models import Employee,Search,Tasks
 
 class EmployeeForm(forms.ModelForm):
     class Meta:
@@ -29,3 +29,10 @@ class EditForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = ['name','age','email','position','designation','phone_number','image']
+        
+class TaskForm(forms.ModelForm):
+    password= forms.CharField(widget=forms.PasswordInput)
+    class Meta:
+        model = Tasks
+        fields = ['name','deadline']
+        

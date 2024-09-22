@@ -8,11 +8,10 @@ from profiles.models import Employee
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User
 
-
 # Create your views here.
 
 def user_is_admin(user):
-    return user.is_authenticated and user.is_superuser
+    return user.is_authenticated and user.email=="vdantulu4@gitam.in"
 
 def login_page(request):
     if request.method=="POST":
@@ -25,7 +24,6 @@ def login_page(request):
                 return redirect('all')
             employee = get_object_or_404(Employee, username=username)
             slug=employee.slug
-
             return redirect('detail',slug)
         else:
             return HttpResponseRedirect('login')
@@ -56,3 +54,26 @@ def sign(request):
 def logout_user(request):
     logout(request)
     return redirect("login_page")
+
+def check(request):
+    if not request.user.is_authenticated:
+        print("User is not authenticated")
+        return redirect('login_page')
+
+    user_email = request.user.email
+    print("User email:", user_email)
+    try:
+        if user_is_admin(request.user):
+            print("User is admin, redirecting to all")
+            return redirect('all')
+        employee = Employee.objects.get(email=user_email)
+        slug = employee.slug
+        print("Employee slug:", slug)
+
+        print("Redirecting to detail with slug:", slug)
+        return redirect('detail', slug)
+
+    except Employee.DoesNotExist:
+        print("Logging out, user not found in Employee model")
+        logout(request)
+        return redirect('login_page')

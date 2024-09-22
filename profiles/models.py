@@ -29,3 +29,10 @@ class Search(models.Model):
     name=models.CharField(max_length=50)
     position=models.CharField(max_length=100,default='')
     designation=models.CharField(max_length=100,default='')
+
+class Tasks(models.Model):
+    email=models.EmailField(default='')
+    name=models.CharField(max_length=50)
+    deadline=models.DateField(default=timezone.datetime.now)
+    assigned=models.BooleanField(default=False)
+    review=models.BooleanField(default=False)
